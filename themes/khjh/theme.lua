@@ -21,21 +21,25 @@ theme.wallpaper                                 = theme.dir .. "/wall.png"
 theme.font										= "Droid Sans 14"
 theme.taglist_font 								= "Droid Sans 14"
 theme.fg_normal                                 = "#BBBBBB"
-theme.fg_focus                                  = "#78A4FF"
-theme.bg_normal                                 = "#121212"
-theme.bg_focus                                  = "#121212"
---theme.bg_focus									= "#78A4FF"
-theme.fg_urgent                                 = "#000000"
+--theme.fg_focus                                  = "#78A4FF"
+theme.fg_focus									= "#447EAC"
+--theme.bg_normal                                 = "#121212"
+theme.bg_normal									= "#000000cc"
+theme.tasklist_bg_normal						= "#00000000"
+theme.bg_focus                                  = "#00000000"
+--theme.bg_focus									= theme.bg_normal
+theme.fg_urgent                                 = "#000000cc"
 theme.bg_urgent                                 = "#FFFFFF"
 theme.border_width                              = 2
 theme.border_normal                             = "#141414"
 theme.border_focus                              = "#747474"
 theme.taglist_fg_focus                          = "#FFFFFF"
-theme.taglist_bg_focus                          = "#121212"
-theme.taglist_bg_normal                         = "#121212"
+theme.taglist_bg_focus                          = "#12121295"
+theme.taglist_bg_normal                         = "#12121295"
 --theme.taglist_fg_normal							= "#AFAFAF"
 theme.titlebar_bg_normal                        = "#191919"
 theme.titlebar_bg_focus                         = "#262626"
+theme.bg_systray								= "#00000000"
 theme.menu_height                               = 28
 theme.menu_width                                = 250
 theme.tasklist_disable_icon                     = true
@@ -67,7 +71,7 @@ theme.layout_max                                = theme.dir .. "/icons/max.png"
 theme.layout_fullscreen                         = theme.dir .. "/icons/fullscreen.png"
 theme.layout_magnifier                          = theme.dir .. "/icons/magnifier.png"
 theme.layout_floating                           = theme.dir .. "/icons/floating.png"
-theme.useless_gap                               = 0
+theme.useless_gap                               = 4
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
@@ -360,7 +364,7 @@ function theme.at_screen_connect(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 --            bar_spr,
-            wibox.widget.systray(),
+    --        wibox.widget.systray(),
             bar_spr,
             --mail.widget,
             mpdicon,
@@ -376,6 +380,7 @@ function theme.at_screen_connect(s)
             bar_spr,
 --            mytextclock,
 			s.mylayoutbox,
+			wibox.widget.systray(),
         },
     }
 	-- Create the vertical wibox
