@@ -24,18 +24,18 @@ theme.fg_normal                                 = "#BBBBBB"
 --theme.fg_focus                                  = "#78A4FF"
 theme.fg_focus									= "#447EAC"
 --theme.bg_normal                                 = "#121212"
-theme.bg_normal									= "#000000cc"
+theme.bg_normal									= "#000000aa"
 theme.tasklist_bg_normal						= "#00000000"
-theme.bg_focus                                  = "#00000000"
---theme.bg_focus									= theme.bg_normal
-theme.fg_urgent                                 = "#000000cc"
+--theme.bg_focus                                  = "#00000000"
+theme.bg_focus									= theme.bg_normal
+theme.fg_urgent                                 = "#000000aa"
 theme.bg_urgent                                 = "#FFFFFF"
 theme.border_width                              = 2
 theme.border_normal                             = "#141414"
 theme.border_focus                              = "#747474"
 theme.taglist_fg_focus                          = "#FFFFFF"
-theme.taglist_bg_focus                          = "#12121295"
-theme.taglist_bg_normal                         = "#12121295"
+theme.taglist_bg_focus                          = "#00000000"
+theme.taglist_bg_normal                         = "#00000000"
 --theme.taglist_fg_normal							= "#AFAFAF"
 theme.titlebar_bg_normal                        = "#191919"
 theme.titlebar_bg_focus                         = "#262626"
@@ -71,7 +71,7 @@ theme.layout_max                                = theme.dir .. "/icons/max.png"
 theme.layout_fullscreen                         = theme.dir .. "/icons/fullscreen.png"
 theme.layout_magnifier                          = theme.dir .. "/icons/magnifier.png"
 theme.layout_floating                           = theme.dir .. "/icons/floating.png"
-theme.useless_gap                               = 4
+theme.useless_gap                               = 0
 theme.titlebar_close_button_focus               = theme.dir .. "/icons/titlebar/close_focus.png"
 theme.titlebar_close_button_normal              = theme.dir .. "/icons/titlebar/close_normal.png"
 theme.titlebar_ontop_button_focus_active        = theme.dir .. "/icons/titlebar/ontop_focus_active.png"
@@ -324,7 +324,7 @@ function theme.at_screen_connect(s)
     gears.wallpaper.maximized(wallpaper, s, false)
 
     -- Tags
-    awful.tag(awful.util.tagnames, s, awful.layout.layouts)
+--    awful.tag(awful.util.tagnames, s, awful.layout.layouts)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -336,6 +336,13 @@ function theme.at_screen_connect(s)
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+
+-- Tag names and layouts
+    --awful.tag(awful.util.tagnames, s, awful.layout.layouts)
+	local names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
+	local l = awful.layout.suit
+	local layouts = { l.floating, l.fair.horizontal, l.tile, l.floating, l.tile.bottom, l.corner.se, l.magnifier, l.floating, l.floating, }
+	awful.tag(names, s, layouts)
 
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, awful.util.taglist_buttons)
